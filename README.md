@@ -1,82 +1,91 @@
-# Blog Project — Base Inicial de Django (Preentrega 7)
-
-Este repositorio contiene la estructura base y la configuración inicial de una aplicación web de blog desarrollada con **Django** y **Python**.
+# 🚀 Mi Blog con Django — Preentrega 8
 
 ---
 
-## 📝 Descripción del Proyecto
+## 💡 ¿De qué trata este proyecto?
 
-Incluye:
+El objetivo principal es construir una plataforma web limpia, modular y fácil de navegar. En esta entrega en particular, trabajé sobre el patrón MVT (Modelo - Vista - Template) de Django implementando:
 
-- La arquitectura inicial del proyecto Django (`blog_project`)
-- La creación y registro de una aplicación principal (`posts`)
-- La configuración regional en español
-- La preparación del entorno con control de versiones mediante Git y GitHub
+- 🧩 **Herencia de plantillas (`base.html`)**: Diseñé una plantilla madre que contiene el encabezado, el menú de navegación y el pie de página comunes. De esta forma, cada página hija solo define su contenido específico sin repetir código innecesario.
+- ⚙️ **Vistas dinámicas (`views.py`)**: Funciones que reciben las peticiones del usuario y devuelven las páginas renderizadas junto con su contexto.
+- 🧭 **Rutas organizadas (`urls.py`)**: Mapeo limpio y modular, separando las URLs generales del proyecto de las rutas específicas de la aplicación `posts`.
+- 🎨 **Diseño visual (`estilos.css`)**: Integración de archivos estáticos para lograr una interfaz moderna, prolija y agradable tanto en computadoras como en dispositivos móviles.
 
 ---
 
-## 📁 Estructura del Repositorio
+---
 
-/
-├── blog_project/       # Configuración principal del proyecto Django (settings.py, urls.py, wsgi.py)
-├── posts/              # Aplicación inicial
-├── .gitignore          # Archivo para excluir archivos locales y temporales de Git
-├── db.sqlite3          # Base de datos SQLite (generada automáticamente)
-├── manage.py           # Script principal para la administración de Django
-├── README.md           # Documentación técnica e instrucciones del repositorio
-└── requirements.txt    # Lista de dependencias del proyecto
+## 📁 ¿Cómo está organizado el proyecto?
+
+Así está estructurado el código dentro del repositorio:
+
+
+blog_django/
+├── blog_project/           # Configuración central del proyecto Django
+│   ├── settings.py         # Configuración general y de archivos estáticos
+│   ├── urls.py             # Enrutador principal (incluye a posts.urls)
+│   ├── wsgi.py
+│   └── asgi.py
+├── posts/                  # Aplicación principal del blog
+│   ├── static/             # Archivos estáticos de diseño
+│   │   └── posts/
+│   │       └── css/
+│   │           └── estilos.css   # Estilos visuales del sitio
+│   ├── templates/          # Plantillas HTML
+│   │   └── posts/
+│   │       ├── base.html         # Plantilla madre (estructura y navegación común)
+│   │       ├── inicio.html       # Página de inicio y bienvenida
+│   │       └── acerca.html       # Página sobre el autor y el proyecto
+│   ├── admin.py
+│   ├── apps.py
+│   ├── models.py
+│   ├── tests.py
+│   ├── urls.py             # Rutas propias de la app posts
+│   └── views.py            # Lógica y renderizado de las vistas
+├── .gitignore              # Archivos y carpetas ignorados por Git
+├── db.sqlite3              # Base de datos SQLite local
+├── manage.py               # Comando de administración de Django
+├── README.md               # Esta documentación
+└── requirements.txt        # Librerías y dependencias necesarias
+
+
+## 💻 ¿Cómo correr este proyecto en tu máquina?
+
+Si querés probar el blog en tu entorno local, podés seguir estos pasos:
+
+### 1. Clonar el repositorio
+
+git clone <url-de-tu-repositorio>
+cd blog_django
+
+
+### 2. Crear y activar tu entorno virtual
+
+# En Windows:
+python -m venv venv
+venv\Scripts\activate
+
+# En Linux o MAC
+python3 -m venv venv
+source venv/bin/activate
+
+
+### 3. Instalar las dependencias
+
+pip install -r requirements.txt
 ```
 
----
+### 4. Aplicar las migraciones iniciales
 
-## ⚙️ Requisitos
-
-- Python 3.14.6
-- Django 6.1.1
-
-Dependencias completas en `requirements.txt`:
-
-```
-asgiref==3.12.1
-Django==6.1.1
-sqlparse==0.6.0
-tzdata==2026.4
+python manage.py migrate
 ```
 
----
+### 5. Encender el servidor
 
-## Instalación
+python manage.py runserver
 
-1. **Clonar el repositorio**
-   ```
-   git clone <url-del-repositorio>
-   cd blog_django
-   ```
 
-2. **Crear y activar el entorno virtual**
-   ```
-   python -m venv venv
-   # Windows
-   venv\Scripts\activate
-   # macOS / Linux
-   source venv/bin/activate
-   ```
-
-3. **Instalar dependencias**
-   ```
-   pip install -r requirements.txt
-   ```
-
-4. **Aplicar migraciones**
-   ```
-   python manage.py migrate
-   ```
-
-5. **Correr el servidor de desarrollo**
-   ```
-   python manage.py runserver
-   ```
-
-   El proyecto estará disponible en: [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
+Una vez iniciado, abrí tu navegador y visitá:  
+👉 **[http://127.0.0.1:8000/](http://127.0.0.1:8000/)**
 
 ---
