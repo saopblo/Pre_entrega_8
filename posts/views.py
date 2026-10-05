@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Post
 
 
 def inicio(request):
@@ -9,4 +10,10 @@ def acerca(request):
     contexto_acerca = { 'titulo': 'Acerca de', 'seccion': 'Acerca' }
     return render(request, "posts/acerca.html", contexto_acerca)
 
+def lista_posts(request):
+    posts = Post.objects.filter(estado="publicado").order_by("-fecha_creacion")
 
+    contexto = {
+        'posts_lista':posts,
+    }
+    return render(request, "posts/lista_posts.html", contexto)

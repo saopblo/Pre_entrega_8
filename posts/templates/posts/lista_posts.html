@@ -1,0 +1,14 @@
+{% extends "posts/base.html" %}
+
+{% block content %}
+ <h1>Últimos posts</h1>
+ {% for post in posts %}
+ <article>
+ <h2>{{ post.titulo }}</h2>
+ <p>Publicado el {{ post.fecha_creacion|date:"d/m/Y"}}</p>
+ <p>{{ post.contenido|truncatewords:30 }}</p>
+ </article>
+ {% empty %}
+ <p>Todavía no hay posts publicados.</p>
+ {% endfor %}
+{% endblock %}
