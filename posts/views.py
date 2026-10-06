@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Post
-
+from django import forms
 
 def inicio(request):
     contexto_inicio = { 'titulo': 'Página de Inicio', 'seccion': 'Principal' }
@@ -14,6 +14,6 @@ def lista_posts(request):
     posts = Post.objects.filter(estado="publicado").order_by("-fecha_creacion")
 
     contexto = {
-        'posts_lista':posts,
+        'posts':posts,
     }
     return render(request, "posts/lista_posts.html", contexto)
